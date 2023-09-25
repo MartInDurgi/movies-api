@@ -26,8 +26,6 @@ class MovieController extends Controller
         }
     }
 
-    
-
     /**
      * Show the form for creating a new resource.
      */
@@ -69,7 +67,7 @@ class MovieController extends Controller
     public function update(UpdateMovieRequest $request, $id)
     {
         $data = $request->validated();
-        $selectedMovie = Movie::find($id);
+        $selectedMovie = Movie::findOrFail($id);
         $selectedMovie->update($data);
         return Movie::find($id);
     }
